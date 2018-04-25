@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>let,const</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+</head>
+
+<body>
+
+    <!-- <script type="text/babel"> -->
+    <script>
+    
+// let命令
+       // ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效 
+    //    { 
+    //         let a = 10;
+    //         var b = 1;
+    //     } 
+    //     console.log(a); // a is not defined
+        // console.log(b); // 1
+
+        // var a = [];
+        // for(var i = 0; i<10;i++){
+        //     a[i] = function () {
+        //         console.log(i);
+        //     }
+        // }
+        // console.log(a); // [ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ]
+        // console.log(a[6]()); // 10
+        //  变量i是var命令声明的，在全局范围内都有效，所以全局只有一个变量i
+        // 每一次循环，变量i的值都会发生改变，而循环内被赋给数组a的函数内部的console.log(i)，里面的i指向的就是全局的i。
+        // 也就是说，所有数组a的成员里面的i，指向的都是同一个i，导致运行时输出的是最后一轮的i的值，也就是 10
+
+        // var a = [];
+        // for(var i = 0; i<10;i++){
+        //     a[i] = i;
+        // }
+        // console.log(a); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        
+
+        // var a = [];
+        // for (let i = 0; i < 10; i++) {
+        // a[i] = function () {
+        //     console.log(i);
+        // };
+        // }
+        // console.log(a); //[ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ, ƒ]
+        // a[6](); // 6
+        // console.log(a[0]);// ƒ () { console.log(i); }
+        // 虽然a依然是函数集合，但是每一个循环的i都是重新声明的一个新的变量，i只在本轮循环有效
+        // JavaScript 引擎内部会记住上一轮循环的值，初始化本轮的变量i时，就在上一轮循环的基础上进行计算
+
+        //  for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域
+        // for (let i = 0; i < 3; i++) {
+        //     let i = 'abc';
+        //     console.log(i);
+        //     }
+            // abc
+            // abc
+            // abc
+         //  输出了 3 次abc。这表明函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域（经过插件转化后只打印了一次）
+
+    // 不存在的变量提升
+        // var命令会发生”变量提升“现象
+        // let命令改变了语法行为，它所声明的变量一定要在声明后使用，否则报错
+        // console.log(a); // undefined
+        // console.log(b);// b is not defined
+        
+        // var a = 0;
+        // let b = 1; 
+
+    // 暂时性死区 （temporal dead zone，简称 TDZ）
+        //  只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响
+            // var tmp = 123;
+
+            // if (true) {
+            // tmp = 'abc'; // ReferenceError tmp is not defined
+            // let tmp;
+            // }
+
+            // if (true) {
+            //     // TDZ开始
+            //     tmp = 'abc'; // ReferenceError
+            //     console.log(tmp); // ReferenceError
+
+            //     let tmp; // TDZ结束
+            //     console.log(tmp); // undefined
+
+            //     tmp = 123;
+            //     console.log(tmp); // 123
+            // }
+            // 在let命令声明变量tmp之前，都属于变量tmp的“死区”
+
+            // “暂时性死区”导致typeof不再是一个百分之百安全的操作
+            // typeof x; // ReferenceError
+            // let x;
+            // 如果一个变量根本没有被声明，使用typeof反而不会报错。
+            // console.log(typeof undeclared_variable);// "undefined"
+    // 不允许重复声明
+        //  let不允许在相同作用域内，重复声明同一个变量
+        // 报错
+        // function func() {
+        // let a = 10;
+        // var a = 1;
+        // }
+        // func(); //Identifier 'a' has already been declared
+
+        // 报错
+        // function func() {
+        // let a = 10;
+        // let a = 1;
+        // }
+        // func();//Identifier 'a' has already been declared
+
+        //  不能在函数内部重新声明参数
+        // function func(arg) {
+        // let arg; // 报错
+        // }
+        // func(2)
+
+        // function func(arg) {
+        //     {
+        //         let arg; // 不报错
+        //     }
+        // }
+
+        
+    </script>
+</body>
+
+</html>
