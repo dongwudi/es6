@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Math.trunc()
+            // Math.trunc方法用于去除一个数的小数部分，返回整数部分
+                Math.trunc(4.1) // 4
+                Math.trunc(4.9) // 4
+                Math.trunc(-4.1) // -4
+                Math.trunc(-4.9) // -4
+                Math.trunc(-0.1234) // -0
+                // 对于非数值，Math.trunc内部使用Number方法将其先转为数值
+                    Math.trunc('123.456') // 123
+                    Math.trunc(true) //1
+                    Math.trunc(false) // 0
+                    Math.trunc(null) // 0
+                // 对于空值和无法截取整数的值，返回NaN
+                    Math.trunc(NaN);      // NaN
+                    Math.trunc('foo');    // NaN
+                    Math.trunc();         // NaN
+                    Math.trunc(undefined) // NaN
+                // Math.trunc = Math.trunc || function (x) {
+                //         return x < 0 ? Math.ceil(x) : Math.floor(x);
+                //     };
+        // Math.sign() 
+                    // Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值
+                        // 参数为正数，返回 + 1；
+                        // 参数为负数，返回 - 1；
+                        // 参数为 0，返回0；
+                        // 参数为 - 0，返回 - 0;
+                        // 其他值，返回NaN。
+                            // Math.sign(-5) // -1
+                            // Math.sign(5) // +1
+                            // Math.sign(0) // +0
+                            // Math.sign(-0) // -0
+                            // Math.sign(NaN) // NaN
+                        // 如果参数是非数值，会自动转为数值。对于那些无法转为数值的值，会返回NaN
+                            // Math.sign('')  // 0
+                            // Math.sign(true)  // +1
+                            // Math.sign(false)  // 0
+                            // Math.sign(null)  // 0
+                            // Math.sign('9')  // +1
+                            // Math.sign('foo')  // NaN
+                            // Math.sign()  // NaN
+                            // Math.sign(undefined)  // NaN
+                    // Math.sign = Math.sign || function (x) {
+                    //         x = +x; // convert to a number
+                    //         if (x === 0 || isNaN(x)) {
+                    //             return x;
+                    //         }
+                    //         return x > 0 ? 1 : -1;
+                    //     };
+
+        // **
+        // 指数运算符（**）
+            //  2 ** 2 // 4
+            // 2 ** 3 // 8
+            
+                let a = 1.5;
+                    a **= 2;
+                    // 等同于 a = a * a;
+
+                    let b = 4;
+                    b **= 3;
+                // 等同于 b = b * b * b;
+    </script>
+</body>
+</html>

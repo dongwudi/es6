@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6 为正则表达式添加了y修饰符，叫做“粘连”（sticky）修饰符。
+        // y修饰符的作用与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就可，而y修饰符确保匹配必须从剩余的第一个位置开始，这也就是“粘连”的涵义
+            var s = 'aaa_aa_a';
+            var r1 = /a+/g;
+            var r2 = /a+/y;
+
+            r1.exec(s) // ["aaa"]
+            r2.exec(s) // ["aaa"]
+
+            r1.exec(s) // ["aa"]
+            r2.exec(s) // null
+
+            // 实际上，y修饰符号隐含了头部匹配的标志 ^
+            / b / y.exec('aba')
+            // null
+
+            // 单单一个y修饰符对match方法，只能返回第一个匹配，必须与g修饰符联用，才能返回所有匹配
+            'a1a2a3'.match(/a\d/y) // ["a1"]
+            'a1a2a3'.match(/a\d/gy) // ["a1", "a2", "a3"]
+            'a1a2a3'.match(/a\d/g) // ["a1", "a2", "a3"]
+
+            // 与y修饰符相匹配，ES6 的正则对象多了sticky属性，表示是否设置了y修饰符
+            var r = /hello\d/y;
+            r.sticky // true
+
+        
+    </script>
+</body>
+</html>

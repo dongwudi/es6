@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了
+        // ES5 的写法
+            // function f(x, y, z) {
+            //     // ...
+            // }
+            // var args = [0, 1, 2];
+            // f.apply(null, args);
+
+            // ES6的写法
+            // function f(x, y, z) {
+            //     // ...
+            // }
+            // let args = [0, 1, 2];
+            // f(...args);
+
+    // 扩展运算符取代apply方法的一个实际的例子，应用Math.max方法，简化求出一个数组最大元素的写法
+        // // ES5 的写法
+        //     Math.max.apply(null, [14, 3, 77])
+
+        //     // ES6 的写法
+        //     Math.max(...[14, 3, 77])
+
+        //     // 等同于
+        //     Math.max(14, 3, 77);
+
+                
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // （1）复制数组
+            // 数组是复合的数据类型，直接复制的话，只是复制了指向底层数据结构的指针，而不是克隆一个全新的数组
+                // const a1 = [1, 2];
+                // const a2 = a1;
+
+                // a2[0] = 2;
+                // a1 // [2, 2]
+                // a2并不是a1的克隆，而是指向同一份数据的另一个指针。修改a2，会直接导致a1的变化
+                // ES5 只能用变通方法来复制数组。
+
+                    // const a1 = [1, 2];
+                    // const a2 = a1.concat();
+
+                    // a2[0] = 2;
+                    // a1 // [1, 2]
+
+                // 扩展运算符提供了复制数组的简便写法
+                        // const a1 = [1, 2];
+                        // // 写法一
+                        // const a2 = [...a1];
+                        // // 写法二
+                        // const [...a2] = a1;
+                
+        // （2）合并数组
+            // 扩展运算符提供了数组合并的新写法
+                // ES5
+                // [1, 2].concat(more)
+                // ES6
+                // [1, 2, ...more]
+        // （3）与解构赋值结合
+                // 扩展运算符可以与解构赋值结合起来，用于生成数组
+                // // ES5
+                // a = list[0], rest = list.slice(1)
+                // // ES6
+                // [a, ...rest] = list
+        // （4）字符串
+            // 扩展运算符还可以将字符串转为真正的数组。
+            // [...'hello']
+            // [ "h", "e", "l", "l", "o" ]
+            // 任何 Iterator 接口的对象，都可以用扩展运算符转为真正的数组
+
+            // 对于那些没有部署 Iterator 接口的类似数组的对象，扩展运算符就无法将其转为真正的数组
+            // let arrayLike = {
+            //         '0': 'a',
+            //         '1': 'b',
+            //         '2': 'c',
+            //         length: 3
+            //     };
+
+            //     // TypeError: Cannot spread non-iterable object.
+            //     let arr = [...arrayLike];
+            // arrayLike是一个类似数组的对象，但是没有部署 Iterator 接口，扩展运算符就会报错。这时，可以改为使用Array.from方法将arrayLike转为真正的数组
+            
+        // （5）实现了 Iterator 接口的对象
+        // （6）Map 和 Set 结构，Generator 函数
+
+    </script>
+</body>
+</html>

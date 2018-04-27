@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 格式
+            // Object.setPrototypeOf(object, prototype)
+        
+        let proto = {};
+            let obj = { x: 10 };
+            Object.setPrototypeOf(obj, proto);
+
+            proto.y = 20;
+            proto.z = 40;
+
+            obj.x // 10
+            obj.y // 20
+            obj.z // 40
+
+        // 将proto对象设为obj对象的原型，所以从obj对象可以读取proto对象的属性。
+        
+
+        //Object.getPrototypeOf(obj)
+            // 与Object.setPrototypeOf方法配套，用于读取一个对象的原型对象
+            function Rectangle() {
+                    // ...
+                }
+
+                const rec = new Rectangle();
+
+                Object.getPrototypeOf(rec) === Rectangle.prototype
+                // true
+
+                Object.setPrototypeOf(rec, Object.prototype);
+                Object.getPrototypeOf(rec) === Rectangle.prototype
+                // false
+    </script>
+</body>
+</html>
